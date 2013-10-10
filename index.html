@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+    function drawCanvas(imageId, canvasId, canvasWidth, canvasHeight) {
+      var image = document.getElementById(imageId);
+      image.addEventListener('load', function() {
+        var canvas = document.getElementById(canvasId);
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var context = canvas.getContext('2d');
+        context.drawImage(image, 0, 0);
+      });
+    }
+    </script>
+</head>
+<body>
+  <h2><a href="http://www.w3.org/html/wg/drafts/srcset/w3c-srcset">srcset</a> testcases for SVG</h2>
+  <div class="test">
+    <h3>Canvas SVG without explicit dimensions - 1x</h3>
+    <div class="expected">expected<br/>
+      <img id="svg7" src="srcset.svg" width="400" height="200">
+    </div>
+    <div class="actual">actual<br/>
+      <canvas id="canvas1"></canvas>
+    </div>
+    <script>drawCanvas('svg7', 'canvas1', 400, 200);</script>
+    This test should show an SVG image drawn into a canvas. The canvas and image should look the same and both should be 200x100.<br/>
+    <code class="stats" id="code11"></code>
+    <br clear="all"/>
+  </div>
+  <div class="test">
+    <h3>Canvas SVG without explicit dimensions - 2x</h3>
+    <div class="expected">expected<br/>
+      <img id="svg8" src="srcset.svg" width="200" height="100">
+    </div>
+    <div class="actual">actual<br/>
+      <canvas id="canvas2"></canvas>
+    </div>
+    <script>drawCanvas('svg8', 'canvas2', 200, 100);</script>
+    This test should show an SVG image drawn into a canvas. The canvas and image should look the same and both should be 100x50.<br/>
+    <code class="stats" id="code12"></code>
+    <br clear="all"/>
+  </div>
+</body>
+</html>
